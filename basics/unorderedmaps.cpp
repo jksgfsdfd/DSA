@@ -10,6 +10,8 @@ int main(){
 
 	string car;
 	cin>>car;
+
+	price.erase(car);
 	
 	if(price.count(car)){
 		cout<<price[car]<<endl;
