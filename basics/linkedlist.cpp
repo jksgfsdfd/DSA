@@ -1,5 +1,4 @@
 #include<iostream>
-using namespace std;
 
 class node{
  public:
@@ -14,7 +13,7 @@ class node{
 
 void insert(node **headptr,int data){
 
-	if(*headptr==0){
+	if(*headptr==NULL){
 		*headptr=new node(data);
 		return;
 	}else{
@@ -34,18 +33,16 @@ void print(node *head){
 	}
 }
 
-int main(){
-	node *head;
-	cout<<head<<endl;
-	(*(&head))++;
-	cout<<head<<endl;
-	
-//	insert(&head,10);
-//	cout<<head;
-//	insert(&head,5);
-//	insert(&head,10);
-//	insert(&head,10);
-//	insert(&head,5);
-//	insert(&head,5);
-//	print(head);
+void insertathead(node **headptr,int data){
+	if(*headptr==NULL){
+		*headptr=new node(data);
+		return;
+	}else{
+		node *temp=new node(data);
+		temp->next=*headptr;
+		*headptr=temp;
+		return;
+	}
 }
+
+
