@@ -1,0 +1,15 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(){
+	string s("hello make tokens");
+	stringstream ss(s,' ');
+	vector<string> tokens;
+	for(string token:ss){
+		tokens.push_back(token);
+	}
+	for(string token:tokens){
+		cout<<token<<endl;
+	}
+}
