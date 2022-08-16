@@ -9,12 +9,12 @@ vector<pair<string,string>> makekeymap(vector<string> arr,int key){
 	vector<pair<string,string>> vp;
 	char * p;
 	for(string s:arr){
+		pair<string,string> a;
+		a.first=s;
 		p=strtok((char *)s.c_str()," ");
 		for(int i=0;i<key-1;i++){
 			p=strtok(NULL," ");
 		}
-		pair<string,string> a;
-		a.first=s;
 		a.second=(string) p;
 		vp.push_back(a);
 	}
@@ -53,26 +53,31 @@ int main(){
 		count--;
 	}
 
-	for(string s:arr){
-
-		cout<<s<<endl;
-	}
-
-	int key=2;
-	string type="numeric";
+	int key;
+	string type;
 	string reverse;
-	//cin>>key>>type>>reverse;
+	cin>>key>>type>>reverse;
 	vector<pair<string,string>> vp;
 	vp=makekeymap(arr,key);
-	for(auto x:vp){
-		cout<<x.first<<endl;
-	}
+	
 	if(type=="numeric"){
 		sort(vp.begin(),vp.end(),numericCompare);
 	}else{
 		sort(vp.begin(),vp.end(),lexicalCompare);
 	}
+	if(reverse=="reverse"){
+		int left=0;
+		int right=vp.size()-1;
+		pair<string,string> temp;
+		while(left<right){
+			temp=vp[right];
+			vp[right]=vp[left];
+			vp[left]=temp;
+			left++;
+			right--;
+		}
+	}
 	for(pair<string,string> x:vp){
-	//	cout<<x.first<<endl;
+		cout<<x.first<<endl;
 	}
 }
